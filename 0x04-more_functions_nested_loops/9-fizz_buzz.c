@@ -6,27 +6,27 @@
  */
 int main(void)
 {
-	int y;
+	int x;
 
-	for (y = 1; y <= 100; y++)
+	for (x = 1; x <= 100; x++)
 	{
-		if ((y % 3 == 0) && (y % 5 == 0))
+		if ((x % 3 == 0) && (x % 5 == 0))
 		{
 			printf("Fizzbuzz");
 		}
-		else if (y % 3 == 0)
+		else if (x % 3 == 0)
 		{
 			printf("Fizz");
 		}
-		else if (y % 5 == 0)
+		else if (x % 5 == 0)
 		{
 			printf("Buzz");
 		}
 		else
 		{
-			printf("%d", y);
+			printf("%d", x);
 		}
-		if (y != 100)
+		if (x != 100)
 		{
 			printf(" ");
 		}
