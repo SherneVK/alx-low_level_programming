@@ -8,12 +8,15 @@
  */
 int print_last_digit(int number)
 {
+	/* Take the absolute value to handle negative numbers */
 	number = (number >= 0) ? number : -number;
 
-	int last_digit;
+	{
+		int last_digit; /* Declare the variable within a block */
 
-	last_digit = number % 10;
-	_putchar(last_digit + '0');
+		last_digit = number % 10;
+		_putchar(last_digit + '0'); /* Convert the digit to a character and use _putchar to print it */
 
-	return (last_digit);
+		return (last_digit);
+	}
 }
