@@ -3,23 +3,20 @@
 /**
  * print_alphabet_x10 - Prints the alphabet in lowercase ten times
  *
- * Description: This function prints the lowercase alphabet ten times, followed by a new line.
+ * Description: This function prints the lowercase alphabet ten times
  */
 void print_alphabet_x10(void)
 {
-	char abc = 'a';
-	int i = 0;
+	char abc;
 
-	while (i < 260)
+	for (int j = 0; j < 10; j++)
 	{
-		_putchar(abc);
-		abc++;
-
-		if (abc > 'z')
-			abc = 'a';
-
-		i++;
+		abc = 'a';
+		for (int i = 0; i < 26; i++)
+		{
+			_putchar(abc);
+			abc++;
+		}
+		_putchar('\n');
 	}
-
-	_putchar('\n');
 }
