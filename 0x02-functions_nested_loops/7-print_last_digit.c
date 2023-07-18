@@ -1,4 +1,6 @@
 #include "main.h"
+#include <limits.h> /* Add this line to include <limits.h> for INT_MIN */
+#include <unistd.h> /* Add this line to include <unistd.h> for write */
 
 /**
  * _putchar - Dummy implementation to satisfy compilation requirements.
@@ -9,7 +11,8 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+    /* Your actual implementation of _putchar would go here */
+    return write(1, &c, 1);
 }
 
 /**
@@ -20,26 +23,11 @@ int _putchar(char c)
  */
 int print_last_digit(int number)
 {
-	/* Take the absolute value to handle negative numbers */
-	long int num = (number >= 0) ? number : -((long int)number);
+    /* Take the absolute value to handle negative numbers */
+    long int num = (number >= 0) ? number : -((long int)number);
 
-	int last_digit = num % 10;
+    int last_digit = num % 10;
+    _putchar(last_digit + '0'); /* Convert the digit to a character and use _putchar to print it */
 
-	_putchar(last_digit + '0');
-
-	return (last_digit);
-}
-
-/**
- * main - Entry point of the program
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	int last_digit = print_last_digit(INT_MIN);
-
-	_putchar('\n');
-
-	return (0);
+    return last_digit;
 }
