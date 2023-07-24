@@ -22,17 +22,10 @@ int _atoi(char *s)
         i++;
     }
 
-    while (s[i] >= '0' && s[i] <= '9')
+    for (; s[i] >= '0' && s[i] <= '9'; i++)
     {
-        if (num > (INT_MAX / 10) || (num == INT_MAX / 10 && (s[i] - '0') > INT_MAX % 10))
-        {
-            return (sign == 1 ? INT_MAX : INT_MIN);
-        }
-
         num = num * 10 + (s[i] - '0');
-        i++;
     }
 
     return (num * sign);
 }
-
