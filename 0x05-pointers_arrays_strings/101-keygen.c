@@ -14,7 +14,7 @@ int main(void)
                          "0123456789!@#$%^&*()_-+=<>?{}[]";
     int num_valid_chars = sizeof(valid_chars) - 1; /* Exclude the null terminator */
     int pass[100]; /* Allocate an array for the password with enough space */
-    int i, sum, n;
+    int i, sum;
 
     sum = 0;
 
