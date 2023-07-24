@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  * is_digit - Checks if a character is a digit.
@@ -18,14 +19,13 @@ static int is_digit(char c)
 static int get_sign(char *str)
 {
 	int sign = 1;
-
 	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sign *= -1;
 		str++;
 	}
-	return (sign);
+	return sign;
 }
 
 /**
@@ -44,13 +44,11 @@ int _atoi(char *str)
 		{
 			int digit = *str - '0';
 
-			if (sign > 0 && (result > INT_MAX / 10 ||
-						(result == INT_MAX / 10 && digit > INT_MAX % 10)))
-				return (INT_MAX);
+			if (sign > 0 && (result > INT_MAX / 10 || (result == INT_MAX / 10 && digit > INT_MAX % 10)))
+				return INT_MAX;
 
-			if (sign < 0 && (result < INT_MIN / 10 ||
-						(result == INT_MIN / 10 && -digit < INT_MIN % 10)))
-				return (INT_MIN);
+			if (sign < 0 && (result < INT_MIN / 10 || (result == INT_MIN / 10 && -digit < INT_MIN % 10)))
+				return INT_MIN;
 
 			result = result * 10 + sign * digit;
 		}
@@ -62,6 +60,6 @@ int _atoi(char *str)
 		str++;
 	}
 
-	return (result);
+	return result;
 }
 
