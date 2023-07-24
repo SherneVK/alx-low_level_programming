@@ -16,8 +16,8 @@ int main(void)
     int password_length = 10; /* Change this to set the length of the password */
 
     srand(time(NULL));
-
     int i;
+
     for (i = 0; i < password_length; i++)
     {
         int random_index = rand() % num_valid_chars;
