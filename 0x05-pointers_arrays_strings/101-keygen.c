@@ -17,7 +17,8 @@ int main(void)
 
     srand(time(NULL));
 
-    for (int i = 0; i < password_length; i++)
+    int i;
+    for (i = 0; i < password_length; i++)
     {
         int random_index = rand() % num_valid_chars;
         putchar(valid_chars[random_index]);
@@ -27,3 +28,4 @@ int main(void)
 
     return 0;
 }
+
