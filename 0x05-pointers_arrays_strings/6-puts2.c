@@ -7,10 +7,11 @@
  */
 void puts2(char *str)
 {
+    int index = 0;
+
     if (str == NULL)
         return;
 
-    int index = 0;
     while (*str)
     {
         if (index % 2 == 0)
@@ -22,4 +23,3 @@ void puts2(char *str)
 
     _putchar('\n');
 }
-
