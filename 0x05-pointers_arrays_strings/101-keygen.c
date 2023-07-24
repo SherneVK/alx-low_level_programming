@@ -12,8 +12,8 @@ int main(void)
 {
     char valid_chars[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                          "0123456789!@#$%^&*()_-+=<>?{}[]";
-    int num_valid_chars = sizeof(valid_chars) - 1; // Exclude the null terminator
-    int password_length = 10; // Change this to set the length of the password
+    int num_valid_chars = sizeof(valid_chars) - 1; /* Exclude the null terminator */
+    int password_length = 10; /* Change this to set the length of the password */
 
     srand(time(NULL));
 
