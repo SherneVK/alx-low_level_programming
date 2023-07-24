@@ -11,28 +11,27 @@
  */
 char *generate_random_password(void)
 {
-    static char password[PASSWORD_LENGTH + 1];
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    int i;
+	static char password[PASSWORD_LENGTH + 1];
+	const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	int i;
 
-    srand(time(NULL)); /* Seed the random number generator with the current time */
+	srand(time(NULL)); /* Seed the random number generator with the current time */
 
-    for (i = 0; i < PASSWORD_LENGTH; i++)
-    {
-        password[i] = charset[rand() % (sizeof(charset) - 1)];
-    }
+	for (i = 0; i < PASSWORD_LENGTH; i++)
+	{
+		password[i] = charset[rand() % (sizeof(charset) - 1)];
+	}
 
-    password[PASSWORD_LENGTH] = '\0'; /* Null-terminate the password string */
+	password[PASSWORD_LENGTH] = '\0'; /* Null-terminate the password string */
 
-    return password;
+	return (password);
 }
 
 int main(void)
 {
-    char *password = generate_random_password();
+	char *password = generate_random_password();
 
-    printf("%s\n", password);
+	printf("%s\n", password);
 
-    return 0;
+	return (0);
 }
-
