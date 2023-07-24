@@ -15,15 +15,14 @@ char *generate_random_password(void)
     const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     int i;
 
-    srand(time(NULL)); // Seed the random number generator with the current time
+    srand(time(NULL)); /* Seed the random number generator with the current time */
 
     for (i = 0; i < PASSWORD_LENGTH; i++)
     {
-        int index = rand() % (sizeof(charset) - 1);
-        password[i] = charset[index];
+        password[i] = charset[rand() % (sizeof(charset) - 1)];
     }
 
-    password[PASSWORD_LENGTH] = '\0'; // Null-terminate the password string
+    password[PASSWORD_LENGTH] = '\0'; /* Null-terminate the password string */
 
     return password;
 }
