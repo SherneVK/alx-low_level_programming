@@ -15,8 +15,9 @@ int main(void)
     int num_valid_chars = sizeof(valid_chars) - 1; /* Exclude the null terminator */
     int password_length = 10; /* Change this to set the length of the password */
 
+    int i; /* Declare 'i' before the for loop */
+
     srand(time(NULL));
-    int i;
 
     for (i = 0; i < password_length; i++)
     {
