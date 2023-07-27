@@ -6,23 +6,23 @@
  */
 char *leet(char *str)
 {
-    char *ptr = str;
-    char leet_map[] = {'A', 'E', 'O', 'T', 'L'};
-    char leet_rep[] = {'4', '3', '0', '7', '1'};
-    int i;
+	char *tr = str;
+	char leet_map[] = {'A', 'E', 'O', 'T', 'L'};
+	char leet_rep[] = {'4', '3', '0', '7', '1'};
+	int e;
 
-    while (*ptr)
-    {
-        for (i = 0; i < 5; i++)
-        {
-            if (*ptr == leet_map[i] || *ptr == leet_map[i] + 32)
-            {
-                *ptr = leet_rep[i];
-                break;
-            }
-        }
-        ptr++;
-    }
+	while (*tr)
+	{
+		for (e = 0; e < 5; e++)
+		{
+			if (*tr == leet_map[e] || *tr == leet_map[e] + 32)
+			{
+				*tr = leet_rep[e];
+				break;
+			}
+		}
+		tr++;
+	}
 
-    return str;
+	return (str);
 }
