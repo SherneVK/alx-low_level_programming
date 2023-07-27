@@ -1,12 +1,12 @@
 #include "main.h"
-
-#include <stdbool.h> // Required for using bool data type
+#include <stdbool.h>
+#include <ctype.h>
 
 /**
- * is_separator - Checks if a character is a word separator.
+ * is_separator - Check if a character is a separator.
  * @c: The character to check.
  *
- * Return: true if the character is a separator, otherwise false.
+ * Return: true if the character is a separator, false otherwise.
  */
 bool is_separator(char c)
 {
@@ -20,31 +20,31 @@ bool is_separator(char c)
 }
 
 /**
- * cap_string - Capitalizes all words of a string.
- * @str: The input string.
+ * cap_string - Capitalize the first letter of each word in a string.
+ * @str: The input string to capitalize.
  *
- * Return: A pointer to the modified string.
+ * Return: Pointer to the modified input string `str`.
  */
 char *cap_string(char *str)
 {
-    bool capitalize_next = true; // Start with the first character capitalized
-    char *ptr = str;
+    bool capitalize_next = true;
 
-    while (*ptr != '\0')
+    for (int i = 0; str[i] != '\0'; i++)
     {
-        if (is_separator(*ptr))
-            capitalize_next = true; // Capitalize the next character after a separator
-        else if (*ptr >= 'a' && *ptr <= 'z' && capitalize_next)
+        if (is_separator(str[i]))
         {
-            *ptr -= ('a' - 'A'); // Convert lowercase to uppercase
-            capitalize_next = false; // Word already capitalized
+            capitalize_next = true;
+        }
+        else if (capitalize_next && isalpha(str[i]))
+        {
+            str[i] = toupper(str[i]);
+            capitalize_next = false;
         }
         else
-            capitalize_next = false; // Word already capitalized or not a lowercase character
-
-        ptr++;
+        {
+            str[i] = tolower(str[i]);
+        }
     }
 
     return str;
 }
-
