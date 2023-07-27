@@ -1,50 +1,63 @@
 #include "main.h"
-#include <stdbool.h>
-#include <ctype.h>
 
 /**
  * is_separator - Check if a character is a separator.
  * @c: The character to check.
  *
- * Return: true if the character is a separator, false otherwise.
+ * Return: 1 if the character is a separator, 0 otherwise.
  */
-bool is_separator(char c)
+int is_separator(char c)
 {
     char separators[] = " \t\n,;.!?\"(){}";
     for (int i = 0; separators[i] != '\0'; i++)
     {
         if (c == separators[i])
-            return true;
+            return 1;
     }
-    return false;
+    return 0;
 }
 
 /**
- * cap_string - Capitalize the first letter of each word in a string.
- * @str: The input string to capitalize.
+ * to_upper - Convert a lowercase character to uppercase.
+ * @c: The character to convert.
  *
- * Return: Pointer to the modified input string `str`.
+ * Return: The uppercase version of the character.
+ */
+char to_upper(char c)
+{
+    return c >= 'a' && c <= 'z' ? c - ('a' - 'A') : c;
+}
+
+/**
+ * cap_string - Capitalizes all words of a string.
+ * @str: The string to be capitalized.
+ *
+ * Return: A pointer to the changed string.
  */
 char *cap_string(char *str)
 {
-    bool capitalize_next = true;
+    int index = 0;
+    int capitalize_next = 1;
 
-    for (int i = 0; str[i] != '\0'; i++)
+    while (str[index])
     {
-        if (is_separator(str[i]))
+        if (is_separator(str[index]))
         {
-            capitalize_next = true;
+            capitalize_next = 1;
         }
-        else if (capitalize_next && isalpha(str[i]))
+        else if (capitalize_next && str[index] >= 'a' && str[index] <= 'z')
         {
-            str[i] = toupper(str[i]);
-            capitalize_next = false;
+            str[index] = to_upper(str[index]);
+            capitalize_next = 0;
         }
         else
         {
-            str[i] = tolower(str[i]);
+            capitalize_next = 0;
         }
+
+        index++;
     }
 
     return str;
 }
+
