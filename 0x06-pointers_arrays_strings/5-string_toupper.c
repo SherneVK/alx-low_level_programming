@@ -6,14 +6,16 @@
  *
  * Return: A pointer to the modified string.
  */
-
 char *string_toupper(char *str)
 {
-	for (int e  = 0; str[e] != '\0'; e++)
-	{
-		if ('a' <= str[e] && str[e] <= 'z')
-			str[e] -= 32;
-	}
+    char *ptr = str;
 
-	return (str);
+    while (*ptr != '\0')
+    {
+        if (*ptr >= 'a' && *ptr <= 'z')
+            *ptr -= ('a' - 'A');
+        ptr++;
+    }
+
+    return str;
 }
