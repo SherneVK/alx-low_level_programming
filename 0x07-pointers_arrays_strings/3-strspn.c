@@ -1,22 +1,23 @@
 #include "main.h"
+#include <string.h>
 
 /**
- * _strchr - Locates the first occurrence of the character c in the string s.
- * @s: Pointer to the string.
- * @c: Character to be located.
+ * _strspn - Gets the length of a prefix substring.
+ * @s: Pointer to the string to be scanned.
+ * @accept: Pointer to the string containing the bytes to match.
  *
- * Return: Pointer to the first occurrence of c in s, or NULL if not found.
+ * Return: Number of bytes in the initial segment of s which consist
+ *         only of bytes from accept.
  */
-char *_strchr(char *s, char c)
+unsigned int _strspn(char *s, char *accept)
 {
-    for (; *s != '\0'; s++)
-    {
-        if (*s == c)
-            return s;
-    }
+	unsigned int t = 0;
 
-    if (*s == c)
-        return s;
+	while (*s && strchr(accept, *s))
+	{
+		t++;
+		s++
+	}
 
-    return NULL;
+	return (t);
 }
