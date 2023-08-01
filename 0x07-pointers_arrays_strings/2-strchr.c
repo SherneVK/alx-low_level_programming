@@ -5,14 +5,15 @@
  *
  * Return: Pointer to the first occurrence of c in s, or NULL if not found.
  */
+
 char *_strchr(char *s, char c)
 {
-    while (*s != '\0')
-    {
-        if (*s == c)
-            return s;
-        s++;
-    }
+	int e = 0;
 
-    return NULL;
+	for (; s[e] >= '\0'; e++)
+	{
+		if (s[e] == c)
+			return (&s[e]);
+	}
+	return (0);
 }
