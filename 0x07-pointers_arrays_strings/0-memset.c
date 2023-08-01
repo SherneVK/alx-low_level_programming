@@ -9,13 +9,16 @@
  *
  * Return: Pointer to the memory area s.
  */
+
 char *_memset(char *s, char b, unsigned int n)
 {
-	int e;
+	char *r = s;
 
-	for (e = 0; e < n; e++)
+	while (n > 0)
 	{
-		s[e] = b;
+		*r = b;
+		r++;
+		n--;
 	}
 
 	return (s);
