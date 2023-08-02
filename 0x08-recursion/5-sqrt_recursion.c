@@ -1,47 +1,40 @@
 #include "main.h"
+#include <assert.h>
 
 /**
- * _sqrt_helper - uses binary search to find the natural square root
- * of a number within a range.
- * @n: number to calculate the square root of
- * @low: lower bound of the range
- * @high: upper bound of the range
+ * _sqrt_helper - Recursive helper function to find the natural square root.
+ * @n: Number for which to calculate the square root.
+ * @i: Iterator.
  *
- * Return: the resulting square root, or -1 if not found
+ * Return: The resulting square root or -1 if not found.
  */
-int _sqrt_helper(int n, int low, int high)
+int actual_sqrt_recursion(int n, int i)
 {
-	int mid;
-	int sqr;
+    if (i > n / 2)
+        return -1;
 
-	if (low > high)
-		return -1;
+    int sqr = i * i;
 
-	mid = low + (high - low) / 2;
-	sqr = mid * mid;
+    if (sqr == n)
+        return i;
+    if (sqr > n)
+        return -1;
 
-	if (sqr == n)
-		return mid;
-	else if (sqr < n)
-		return _sqrt_helper(n, mid + 1, high);
-	else
-		return _sqrt_helper(n, low, mid - 1);
+    return actual_sqrt_recursion(n, i + 1);
 }
 
 /**
- * _sqrt_recursion - returns the natural square root of a number
- * @n: number to calculate the square root of
+ * _sqrt_recursion - Returns the natural square root of a number.
+ * @n: Number to calculate the square root of.
  *
- * Return: the resulting square root
+ * Return: The resulting square root.
  */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-		return -1;
+    assert(n >= 0); // Use assertion for input validation
 
-	if (n == 0 || n == 1)
-		return n;
+    if (n == 0 || n == 1)
+        return n;
 
-	return _sqrt_helper(n, 0, n / 2); /* Adjust the upper bound for better efficiency */
+    return actual_sqrt_recursion(n, 0);
 }
-
