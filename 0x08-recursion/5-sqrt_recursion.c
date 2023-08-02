@@ -9,7 +9,23 @@
  *
  * Return: the resulting square root, or -1 if not found
  */
-int _sqrt_helper(int n, int low, int high);
+int _sqrt_helper(int n, int low, int high)
+{
+	int mid;
+
+	if (low > high)
+		return -1;
+
+	mid = low + (high - low) / 2;
+	int sqr = mid * mid;
+
+	if (sqr == n)
+		return mid;
+	else if (sqr < n)
+		return _sqrt_helper(n, mid + 1, high);
+	else
+		return _sqrt_helper(n, low, mid - 1);
+}
 
 /**
  * _sqrt_recursion - returns the natural square root of a number
@@ -25,27 +41,3 @@ int _sqrt_recursion(int n)
 	return _sqrt_helper(n, 0, n);
 }
 
-/**
- * _sqrt_helper - uses binary search to find the natural square root
- * of a number within a range.
- * @n: number to calculate the square root of
- * @low: lower bound of the range
- * @high: upper bound of the range
- *
- * Return: the resulting square root, or -1 if not found
- */
-int _sqrt_helper(int n, int low, int high)
-{
-	if (low > high)
-		return -1;
-
-	int mid = low + (high - low) / 2;
-	int sqr = mid * mid;
-
-	if (sqr == n)
-		return mid;
-	else if (sqr < n)
-		return _sqrt_helper(n, mid + 1, high);
-	else
-		return _sqrt_helper(n, low, mid - 1);
-}
