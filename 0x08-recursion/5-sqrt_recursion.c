@@ -10,10 +10,12 @@
  */
 int actual_sqrt_recursion(int n, int i)
 {
+    int sqr;
+
     if (i > n / 2)
         return -1;
 
-    int sqr = i * i;
+    sqr = i * i;
 
     if (sqr == n)
         return i;
@@ -31,10 +33,11 @@ int actual_sqrt_recursion(int n, int i)
  */
 int _sqrt_recursion(int n)
 {
-    assert(n >= 0); // Use assertion for input validation
+    assert(n >= 0); /* Use assertion for input validation */
 
     if (n == 0 || n == 1)
         return n;
 
     return actual_sqrt_recursion(n, 0);
 }
+
