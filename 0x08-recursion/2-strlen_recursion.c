@@ -11,5 +11,6 @@ int _strlen_recursion(char *s)
     if (*s == '\0') // Base case: end of string
         return 0;
     
-    return _strlen_recursion(s + 1) + 1; // Recurse with the next character and then add 1
+    return 1 + _strlen_recursion(s + 1); // Recurse with the next character
 }
+
