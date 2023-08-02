@@ -1,6 +1,17 @@
 #include "main.h"
 
 /**
+ * _sqrt_helper - uses binary search to find the natural square root
+ * of a number within a range.
+ * @n: number to calculate the square root of
+ * @low: lower bound of the range
+ * @high: upper bound of the range
+ *
+ * Return: the resulting square root, or -1 if not found
+ */
+int _sqrt_helper(int n, int low, int high);
+
+/**
  * _sqrt_recursion - returns the natural square root of a number
  * @n: number to calculate the square root of
  *
@@ -38,4 +49,3 @@ int _sqrt_helper(int n, int low, int high)
 	else
 		return _sqrt_helper(n, low, mid - 1);
 }
-
