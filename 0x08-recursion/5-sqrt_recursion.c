@@ -1,5 +1,4 @@
 #include "main.h"
-#include <assert.h>
 
 /**
  * _sqrt_helper - Recursive helper function to find the natural square root.
@@ -29,11 +28,12 @@ int actual_sqrt_recursion(int n, int i)
  * _sqrt_recursion - Returns the natural square root of a number.
  * @n: Number to calculate the square root of.
  *
- * Return: The resulting square root.
+ * Return: The resulting square root or -1 if n is negative.
  */
 int _sqrt_recursion(int n)
 {
-    assert(n >= 0); /* Use assertion for input validation */
+    if (n < 0)
+        return -1;
 
     if (n == 0 || n == 1)
         return n;
