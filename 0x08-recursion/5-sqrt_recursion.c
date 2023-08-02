@@ -1,38 +1,41 @@
 #include "main.h"
 
 /**
- * sqrt_checker - Helper function to calculate the square root using recursion.
- * @n: The number for which to calculate the square root.
- * @guess: The current guess for the square root.
+ * _sqrt_recursion - returns the natural square root of a number
+ * @n: number to calculate the square root of
  *
- * Return: The natural square root of n, or -1 if it doesn't have one.
- */
-int sqrt_checker(int n, int guess)
-{
-    int sqr = guess * guess;
-
-    if (sqr == n) // Found the square root
-        return guess;
-    if (sqr > n) // No natural square root
-        return -1;
-
-    // Continue searching
-    return sqrt_checker(n, guess + 1);
-}
-
-/**
- * _sqrt_recursion - Returns the natural square root of a number.
- * @n: The number for which to calculate the square root.
- * 
- * Return: The natural square root of n, or -1 if it doesn't have one.
+ * Return: the resulting square root
  */
 int _sqrt_recursion(int n)
 {
-    if (n < 0) // Error case: negative number
-        return -1;
+	if (n < 0)
+		return -1;
 
-    if (n == 0 || n == 1) // Base cases: square root of 0 and 1 is itself
-        return n;
-
-    return sqrt_checker(n, 1); // Start checking from guess = 1
+	return _sqrt_helper(n, 0, n);
 }
+
+/**
+ * _sqrt_helper - uses binary search to find the natural square root
+ * of a number within a range.
+ * @n: number to calculate the square root of
+ * @low: lower bound of the range
+ * @high: upper bound of the range
+ *
+ * Return: the resulting square root, or -1 if not found
+ */
+int _sqrt_helper(int n, int low, int high)
+{
+	if (low > high)
+		return -1;
+
+	int mid = low + (high - low) / 2;
+	int sqr = mid * mid;
+
+	if (sqr == n)
+		return mid;
+	else if (sqr < n)
+		return _sqrt_helper(n, mid + 1, high);
+	else
+		return _sqrt_helper(n, low, mid - 1);
+}
+
