@@ -8,22 +8,23 @@
  * Return: A pointer to the beginning of the located substring, or NULL if
  * the substring is not found.
  */
-char *_strstr(char *haystack, const char *needle)
+char *_strstr(char *haystack, char *needle)
 {
-	for (; *haystack != '\0'; haystack++)
-	{
-		char *j = haystack;
-		char *b = needle;
+    char *l, *p;
 
-		while (*j == *b && *b != '\0')
-		{
-			j++;
-			b++;
-		}
+    for (l = haystack; *l != '\0'; l++)
+    {
+        p = needle;
 
-		if (*b == '\0')
-			return (haystack);
-	}
+        while (*l == *p && *p != '\0')
+        {
+            l++;
+            p++;
+        }
 
-	return (0);
+        if (*p == '\0')
+            return haystack;
+    }
+
+    return NULL;
 }
