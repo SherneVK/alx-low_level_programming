@@ -10,24 +10,20 @@
  */
 char *_strstr(char *haystack, const char *needle)
 {
-    char *haystack_ptr = haystack;
-    const char *needle_ptr = needle;
+	for (; *haystack != '\0'; haystack++)
+	{
+		char *j = haystack;
+		char *b = needle;
 
-    while (*haystack_ptr != '\0')
-    {
-        while (*haystack_ptr == *needle_ptr && *needle_ptr != '\0')
-        {
-            haystack_ptr++;
-            needle_ptr++;
-        }
+		while (*j == *b && *b != '\0')
+		{
+			j++;
+			b++;
+		}
 
-        if (*needle_ptr == '\0')
-            return haystack;
+		if (*b == '\0')
+			return (haystack);
+	}
 
-        haystack++;
-        haystack_ptr = haystack;
-        needle_ptr = needle;
-    }
-
-    return NULL;
+	return (0);
 }
