@@ -11,30 +11,29 @@
  */
 char *argstostr(int ac, char **av)
 {
-    int total_length = 0, i, j;
-    char *concatenated;
-    int k = 0;
+	int total_length = 0, i, j;
+	char *concatenated;
+	int k = 0;
 
-    if (ac <= 0 || av == NULL)
-        return NULL;
+	if (ac <= 0 || av == NULL)
+		return (NULL);
 
-    /* Calculate the total length of the concatenated string */
-    for (i = 0; i < ac; i++)
-        total_length += strlen(av[i]) + 1;
+	for (i = 0; i < ac; i++)
+		total_length += strlen(av[i]) + 1;
 
-    concatenated = (char *)malloc((total_length + 1) * sizeof(char));
-    if (concatenated == NULL)
-        return NULL;
+	concatenated = (char *)malloc((total_length + 1) * sizeof(char));
 
-    /* Copy each argument and add a newline character */
-    for (i = 0; i < ac; i++)
-    {
-        for (j = 0; av[i][j]; j++)
-            concatenated[k++] = av[i][j];
-        concatenated[k++] = '\n';
-    }
-    concatenated[k] = '\0';
+	if (concatenated == NULL)
+		return (NULL);
 
-    return concatenated;
+
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j]; j++)
+			concatenated[k++] = av[i][j];
+		concatenated[k++] = '\n';
+	}
+	concatenated[k] = '\0';
+
+	return (concatenated);
 }
-
