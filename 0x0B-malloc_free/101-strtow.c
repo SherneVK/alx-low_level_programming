@@ -1,17 +1,5 @@
-#include "main.h"
 #include <stdlib.h>
-#include <string.h>
-
-/**
- * is_space - Checks if a character is a whitespace character.
- * @c: The character to check.
- *
- * Return: 1 if character is whitespace, 0 otherwise.
- */
-int is_space(char c)
-{
-    return (c == ' ' || c == '\t' || c == '\n');
-}
+#include "main.h"
 
 /**
  * count_words - Counts the number of words in a string.
@@ -21,15 +9,21 @@ int is_space(char c)
  */
 int count_words(char *str)
 {
-    int i, word_count = 0;
+    int count = 0;
+    int in_word = 0; // Flag to track whether inside a word
 
-    for (i = 0; str[i] != '\0'; i++)
+    for (; *str != '\0'; str++)
     {
-        if (!is_space(str[i]) && (is_space(str[i + 1]) || str[i + 1] == '\0'))
-            word_count++;
+        if (*str == ' ')
+            in_word = 0; // Not in a word
+        else if (!in_word)
+        {
+            in_word = 1; // Now in a word
+            count++;
+        }
     }
 
-    return word_count;
+    return count;
 }
 
 /**
@@ -43,36 +37,55 @@ char **strtow(char *str)
     if (str == NULL || *str == '\0')
         return NULL;
 
-    int i, j, k, word_count;
-    char **words;
+    int num_words = count_words(str);
+    if (num_words == 0)
+        return NULL;
 
-    word_count = count_words(str);
-    words = (char **)malloc((word_count + 1) * sizeof(char *));
+    char **words = (char **)malloc((num_words + 1) * sizeof(char *));
     if (words == NULL)
-        return (NULL);
+        return NULL;
 
-    for (i = 0, j = 0; i < word_count; i++)
+    int word_length, word_index = 0;
+    char *start = str;
+
+    for (; *str != '\0'; str++)
     {
-        while (is_space(str[j]))
-            j++;
-
-        k = j;
-        while (!is_space(str[k]) && str[k] != '\0')
-            k++;
-
-        words[i] = _strdup(str + j);
-        if (words[i] == NULL)
+        if (*str == ' ')
         {
-            for (i = 0; i < word_count; i++)
-                free(words[i]);
-            free(words);
-            return (NULL);
+            if (str > start)
+            {
+                word_length = str - start;
+                words[word_index] = _strdup(start);
+                if (words[word_index] == NULL)
+                {
+                    while (word_index > 0)
+                        free(words[--word_index]);
+                    free(words);
+                    return NULL;
+                }
+                words[word_index][word_length] = '\0';
+                word_index++;
+            }
+            start = str + 1;
         }
-
-        j = k;
     }
 
-    words[i] = NULL;
-    return (words);
+    if (str > start)
+    {
+        word_length = str - start;
+        words[word_index] = _strdup(start);
+        if (words[word_index] == NULL)
+        {
+            while (word_index > 0)
+                free(words[--word_index]);
+            free(words);
+            return NULL;
+        }
+        words[word_index][word_length] = '\0';
+        word_index++;
+    }
+
+    words[word_index] = NULL;
+    return words;
 }
 
