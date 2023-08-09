@@ -8,21 +8,19 @@
  * Return: A pointer to the byte in `s` that matches one of the bytes in
  * `accept`, or NULL if no such byte is found.
  */
-char *_strpbrk(char *s, const char *accept)
+char *_strpbrk(char *s, char *accept)
 {
-	const char *a;
+	int r;
 
-	while (*s != '\0')
+	while (*s)
 	{
-		a = accept;
-		while (*a != '\0')
+		for (r = 0; accept[r]; r++)
 		{
-			if (*s == *a)
-				return (s);
-			a++;
+		if (*s == accept[r])
+		return (s);
 		}
-		s++;
+	s++;
 	}
 
-	return (NULL);
+	return ('\0');
 }
