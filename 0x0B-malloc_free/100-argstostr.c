@@ -13,6 +13,7 @@ char *argstostr(int ac, char **av)
 {
     int total_length = 0, i, j;
     char *concatenated;
+    int k = 0;
 
     if (ac <= 0 || av == NULL)
         return NULL;
