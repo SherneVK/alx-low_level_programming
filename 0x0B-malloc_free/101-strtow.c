@@ -40,16 +40,16 @@ int count_words(char *str)
  */
 char **strtow(char *str)
 {
-    int i, j, k, word_count;
-    char **words;
-
     if (str == NULL || *str == '\0')
         return NULL;
+
+    int i, j, k, word_count;
+    char **words;
 
     word_count = count_words(str);
     words = (char **)malloc((word_count + 1) * sizeof(char *));
     if (words == NULL)
-        return NULL;
+        return (NULL);
 
     for (i = 0, j = 0; i < word_count; i++)
     {
@@ -66,7 +66,7 @@ char **strtow(char *str)
             for (i = 0; i < word_count; i++)
                 free(words[i]);
             free(words);
-            return NULL;
+            return (NULL);
         }
 
         j = k;
