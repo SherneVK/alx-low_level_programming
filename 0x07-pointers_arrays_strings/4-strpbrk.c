@@ -10,9 +10,11 @@
  */
 char *_strpbrk(char *s, const char *accept)
 {
+	const char *a;
+
 	while (*s != '\0')
 	{
-		const char *a = accept;
+		a = accept;
 		while (*a != '\0')
 		{
 			if (*s == *a)
