@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.c"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,7 +13,7 @@
 int *array_range(int min, int max)
 {
     int *arr;
-    int size, i;
+    int size, *ptr;
 
     if (min > max)
         return (NULL);
@@ -25,8 +25,11 @@ int *array_range(int min, int max)
     if (arr == NULL)
         return (NULL);
 
-    for (i = 0; i < size; i++)
-        arr[i] = min++;
+    ptr = arr;
+    while (min <= max)
+    {
+        *ptr++ = min++;
+    }
 
     return (arr);
 }
