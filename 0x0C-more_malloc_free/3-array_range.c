@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -12,24 +12,21 @@
  */
 int *array_range(int min, int max)
 {
-    int *arr;
-    int size, *ptr;
+	int *rrr;
+	int size, e;
 
-    if (min > max)
-        return (NULL);
+	if (min > max)
+		return (NULL);
 
-    size = max - min + 1;
+	size = max - min + 1;
 
-    arr = malloc(sizeof(int) * size);
+	rrr = malloc(sizeof(int) * size);
 
-    if (arr == NULL)
-        return (NULL);
+	if (rrr == NULL)
+		return (NULL);
 
-    ptr = arr;
-    while (min <= max)
-    {
-        *ptr++ = min++;
-    }
+	for (e = 0; e < size; e++)
+		rrr[e] = min++;
 
-    return (arr);
+	return (rrr);
 }
