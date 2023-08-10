@@ -36,7 +36,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 
 	for (e = 0; e < len1; e++)
-		aimed[i] = s1[i];
+		aimed[e] = s1[e];
 
 	for (l = 0; l < n; l++, e++)
 		aimed[e] = s2[l];
