@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
- * int_index - Searches for an integer in an array using a given comparison function.
+ * int_index - Searches for an integer in an array
  * @array: Pointer to the array of integers.
  * @size: Number of elements in the array.
  * @cmp: Pointer to the comparison function to be used.
