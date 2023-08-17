@@ -2,10 +2,10 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers - Prints numbers, followed by a new line.
+ * print_numbers - Prints numbers.
  * @separator: The string to be printed between numbers.
  * @n: The number of integers passed to the function.
- * @...: The variable arguments (integers).
+ * @...: The variable arguments.
  *
  * Return: void
  */
