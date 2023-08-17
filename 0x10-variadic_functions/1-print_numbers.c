@@ -20,12 +20,12 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	{
 		printf("%d", va_arg(args, int));
 
-		if (separator != NULL && i != n - 1)
+		if (separator != NULL && e != n - 1)
 		{
 			printf("%s", separator);
 		}
 
-		i++;
+		e++;
 	}
 
 	printf("\n");
