@@ -7,6 +7,7 @@
  * @h: Pointer to the head of the linked list.
  *
  * Return: The number of nodes.
+ *
  */
 size_t print_listint(const listint_t *h)
 {
