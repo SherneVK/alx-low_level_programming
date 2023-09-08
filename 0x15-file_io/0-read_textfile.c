@@ -9,42 +9,44 @@
  *
  * Return: actual number of letters read and printed, 0 on failure.
  */
+
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-    FILE *f;
-    char *bff,
-    size_t r_count, w_count;
-    if (filename == NULL)
-        return (0);
+	FILE *f;
+	char *bff;
+	size_t read_count, write_count;
 
-    f = fopen(filename, "r");
-    if (f == NULL)
-        return (0);
+	if (filename == NULL)
+		return (0);
 
-    bff = malloc(sizeof(char) * letters);
-    if (bff == NULL)
-    {
-        fclose(f);
-        return (0);
-    }
+	f = fopen(filename, "r");
+	if (f == NULL)
+		return (0);
 
-    r_count = fread(bff, sizeof(char), letters, f);
-    if (r_count == 0)
-    {
-        fclose(f);
-        free(bff);
-        return (0);
-    }
+	bff = malloc(sizeof(char) * letters);
+	if (bff == NULL)
+	{
+		fclose(f);
+		return (0);
+	}
 
-    w_count = fwrite(bff, sizeof(char), r_count, stdout);
-    if (w_count != r_count)
-    {
-        fclose(f);
-        free(bff);
-        return (0);
-    }
+	read_count = fread(bff, sizeof(char), letters, f);
+	if (read_count == 0)
+	{
+		fclose(f);
+		free(bff)
+			return (0);
+	}
 
-    fclose(f);
-    free(bff);
-    return (r_count);
+	write_count = fwrite(bff, sizeof(char), read_count, stdout);
+	if (write_count != read_count)
+	{
+		fclose(f);
+		free(bff);
+		return (0);
+	}
+
+	fclose(f);
+	free(bff);
+	return (read_count);
 }
