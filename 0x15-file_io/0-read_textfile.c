@@ -12,41 +12,41 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *f;
+	int fd;
 	char *bff;
-	size_t read_count, write_count;
+	ssize_t read_count, write_count;
 
 	if (filename == NULL)
 		return (0);
 
-	f = fopen(filename, "r");
-	if (f == NULL)
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 		return (0);
 
 	bff = malloc(sizeof(char) * letters);
 	if (bff == NULL)
 	{
-		fclose(f);
+		close(fd);
 		return (0);
 	}
 
-	read_count = fread(bff, sizeof(char), letters, f);
-	if (read_count == 0)
+	read_count = read(fd, bff, letters);
+	if (read_count == -1)
 	{
-		fclose(f);
+		close(fd);
 		free(bff);
 		return (0);
 	}
 
-	write_count = fwrite(bff, sizeof(char), read_count, stdout);
-	if (write_count != read_count)
+	write_count = write(STDOUT_FILENO, bff, read_count);
+	if (write_count == -1 || write_count != read_count)
 	{
-		fclose(f);
+		close(fd);
 		free(bff);
 		return (0);
 	}
 
-	fclose(f);
+	close(fd);
 	free(bff);
 	return (read_count);
 }
