@@ -34,8 +34,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (read_count == 0)
 	{
 		fclose(f);
-		free(bff)
-			return (0);
+		free(bff);
+		return (0);
 	}
 
 	write_count = fwrite(bff, sizeof(char), read_count, stdout);
