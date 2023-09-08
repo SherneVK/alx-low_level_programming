@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 {
 	int from, to;
 	ssize_t bytes_read;
+	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
 		error_exit(97, "Usage: cp file_from file_to");
@@ -37,8 +38,6 @@ int main(int argc, char *argv[])
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (to == -1)
 		error_exit(99, "Can't write to destination file");
-
-	char buffer[BUFFER_SIZE];
 
 	while ((bytes_read = read(from, buffer, BUFFER_SIZE)) > 0)
 	{
